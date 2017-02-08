@@ -16,5 +16,9 @@ RUN mkdir -p /var/seafile && cd /var/seafile && \
 ADD conf-scripts/* /var/seafile/seafile-server-${SEAFILE_SERVER_VERSION}/
 ADD conf-scripts/seahub/seahub/* /var/seafile/seafile-server-${SEAFILE_SERVER_VERSION}/seahub/seahub/
 
+EXPOSE 8082
+EXPOSE 9000
+VOLUME ["/var/seafile/shared"]
+
 WORKDIR /var/seafile/seafile-server-${SEAFILE_SERVER_VERSION}
 CMD [/bin/bash]
