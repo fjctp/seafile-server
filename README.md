@@ -11,17 +11,19 @@ docker run -d --name seafile-server \
 ```
 
 # Default settings:
-email: admin@seafile
-password: password
++ email: admin@seafile
++ password: password
 
 PLEASE CHANGE THE PASSWORD UPON LOGIN
 
-If you want to change the default password, create a file named "auth.txt" with the following information, and put it inside the folder you attach to /var/seafile/shared.
-Example:
+If you want to change the default login or password, create a file named "auth.txt" with the following information, and put it inside the folder you attach to /var/seafile/shared.
+## Example:
+``` json
 {
   email: admin@seafile
   password: password
 }
+```
 
 # Pre-build image
 See https://hub.docker.com/r/fjctp/armhf-seafile-server/
