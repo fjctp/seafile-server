@@ -9,7 +9,7 @@ ENV BINDIR $TOPDIR/seafile-server-${SEAFILE_SERVER_VERSION}
 ENV SHAREDDIR $TOPDIR/shared
 
 RUN apt-get update && \
-    apt-get install python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-urllib3 sqlite3 wget nano && \
+    apt-get install -y python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-urllib3 sqlite3 wget nano && \
     apt-get autoremove && apt-get clean && \
     rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/* 
 RUN mkdir -p $TOPDIR && cd $TOPDIR && \
