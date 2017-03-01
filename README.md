@@ -16,12 +16,12 @@ docker run -d --name seafile-server \
 
 **PLEASE CHANGE THE PASSWORD UPON LOGIN**
 
-If you want to change the default login or password, create a file named "auth.txt" with the following information, and put it inside the folder you attach to /var/seafile/shared.
-## Example:
+## Change default login or password:
+create /var/seafile/shared/admin.txt
 ``` json
 {
-  email: admin@seafile
-  password: password
+  "email": "admin@seafile",
+  "password": "password"
 }
 ```
 
