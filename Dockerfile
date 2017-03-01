@@ -2,6 +2,8 @@ FROM resin/rpi-raspbian:jessie
 MAINTAINER snchan20@yahoo.com
 
 ENV SEAFILE_SERVER_VERSION 6.0.7
+ENV SEAFILE_SERVER_URL https://github.com/haiwen/seafile-rpi/releases/download/v${SEAFILE_SERVER_VERSION}/seafile-server_${SEAFILE_SERVER_VERSION}_stable_pi.tar.gz
+
 ENV TOPDIR /var/seafile
 ENV BINDIR $TOPDIR/seafile-server-${SEAFILE_SERVER_VERSION}
 ENV SHAREDDIR $TOPDIR/shared
@@ -11,7 +13,7 @@ RUN apt-get update && \
     apt-get autoremove && apt-get clean && \
     rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/* 
 RUN mkdir -p $TOPDIR && cd $TOPDIR && \
-    wget https://github.com/haiwen/seafile-rpi/releases/download/v${SEAFILE_SERVER_VERSION}/seafile-server_${SEAFILE_SERVER_VERSION}_stable_pi.tar.gz && \
+    wget ${SEAFILE_SERVER_URL} && \
     tar -xzf seafile-server_* && \
     mkdir installed && \
     mv seafile-server_* installed 
