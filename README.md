@@ -1,5 +1,5 @@
-# docker-armhf-seafile-server
-Seafile server for raspberry pi
+# docker-seafile-server
+Docker image for seafile server. This repo contains two Dockerfiles: one for Raspberry Pi, the other for x64.
 
 # How to start
 ```
