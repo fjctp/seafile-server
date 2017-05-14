@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER snchan20@yahoo.com
 
-ENV SEAFILE_SERVER_VERSION 6.0.7
+ENV SEAFILE_SERVER_VERSION 6.0.8
 ENV SEAFILE_SERVER_URL https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_${SEAFILE_SERVER_VERSION}_x86-64.tar.gz
 
 ENV TOPDIR /var/seafile
