@@ -1,7 +1,4 @@
-# docker-seafile-server
-Docker image for seafile server. This repo contains two Dockerfiles: one for Raspberry Pi, the other for x64.
-
-# How to start
+# Run as daemon
 ```
 docker run -d --name seafile-server \
            -p 8082:8082 \
