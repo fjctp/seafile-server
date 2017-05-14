@@ -26,4 +26,4 @@ create /var/seafile/shared/admin.txt
 ```
 
 # Pre-build image
-See https://hub.docker.com/r/fjctp/armhf-seafile-server/
+See https://hub.docker.com/r/fjctp/seafile-server/
