@@ -227,6 +227,7 @@ AUTHENTICATION_BACKENDS = (
 )
 LOGIN_REDIRECT_URL = '/profile/'
 LOGIN_URL = SITE_ROOT + 'accounts/login'
+LOGOUT_REDIRECT_URL = None
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
@@ -389,6 +390,10 @@ SITE_TITLE = 'Private Seafile'
 
 # Base name used in email sending
 SITE_NAME = 'Seafile'
+
+# Path to the favicon file (relative to the media path)
+# tip: use a different name when modify it.
+FAVICON_PATH = 'img/favicon.ico'
 
 # Path to the Logo Imagefile (relative to the media path)
 LOGO_PATH = 'img/seafile-logo.png'
@@ -557,6 +562,9 @@ CLOUD_DEMO_USER = 'demo@seafile.com'
 ENABLE_TWO_FACTOR_AUTH = False
 OTP_LOGIN_URL = '/profile/two_factor_authentication/setup/'
 
+# Enable personal wiki, group wiki
+ENABLE_WIKI = True
+
 #####################
 # External settings #
 #####################
@@ -658,4 +666,4 @@ CONSTANCE_CONFIG = {
     'ENABLE_TWO_FACTOR_AUTH': (ENABLE_TWO_FACTOR_AUTH,''),
 }
 
-SEAFILE_VERSION = "6.0.8"
+SEAFILE_VERSION = "6.0.9"
