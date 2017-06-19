@@ -1,10 +1,19 @@
 # Run as daemon
+## x86 or x86_64
 ```
 docker run -d --name seafile-server \
            -p 8082:8082 \
            -p 9000:9000 \
            -v <YOUR LOCAL STORAGE>:/var/seafile/shared \
-           fjctp/armhf-seafile-server
+           fjctp/seafile-server:latest
+```
+## RPi
+```
+docker run -d --name seafile-server \
+           -p 8082:8082 \
+           -p 9000:9000 \
+           -v <YOUR LOCAL STORAGE>:/var/seafile/shared \
+           fjctp/seafile-server:raspberrypi3-latest
 ```
 
 # Default settings:
