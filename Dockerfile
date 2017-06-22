@@ -40,4 +40,4 @@ EXPOSE 80 443
 VOLUME ["/var/seafile/shared"]
 
 WORKDIR $BINDIR
-#ENTRYPOINT ["/var/seafile/entry_point.sh"]
+ENTRYPOINT ["/var/seafile/entry_point.sh"]
