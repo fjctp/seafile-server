@@ -8,23 +8,37 @@ ENV TOPDIR /var/seafile
 ENV BINDIR $TOPDIR/seafile-server-${SEAFILE_SERVER_VERSION}
 ENV SHAREDDIR $TOPDIR/shared
 
-RUN apt-get update && \
-    apt-get install -y python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-urllib3 sqlite3 wget nano && \
-    apt-get autoremove && apt-get clean && \
-    rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/* 
-RUN mkdir -p $TOPDIR && cd $TOPDIR && \
-    wget ${SEAFILE_SERVER_URL} && \
-    tar -xzf seafile-server_* && \
-    mkdir installed && \
-    mv seafile-server_* installed 
+RUN apt-get update \
+    && apt-get install -y \
+        python2.7 \
+        libpython2.7 \
+        python-setuptools \
+        python-imaging \
+        python-ldap \
+        python-urllib3 \
+        sqlite3 \
+        wget \
+        nano \
+        nginx \
+    && apt-get autoremove \
+    && apt-get clean \
+    && rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/* 
+RUN mkdir -p $TOPDIR \
+    && cd $TOPDIR \
+    && wget ${SEAFILE_SERVER_URL} \
+    && tar -xzf seafile-server_* \
+    && mkdir installed \
+    && mv seafile-server_* installed \
+    && ln -s $TOPDIR/seafile-server-6.0.9 $TOPDIR/seafile-server-latest \
+    && rm /etc/nginx/sites-enabled/default \
+    && ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
     
-ADD conf-scripts/* $BINDIR/
-ADD conf-scripts/seahub/seahub/* $BINDIR/seahub/seahub/
-ADD entry_point.sh $TOPDIR
+COPY seafile/ $BINDIR/
+COPY nginx/ /etc/nginx/sites-available/
+COPY entry_point.sh $TOPDIR
 
-EXPOSE 8082
-EXPOSE 9000
+EXPOSE 80 443
 VOLUME ["/var/seafile/shared"]
 
 WORKDIR $BINDIR
-ENTRYPOINT ["/var/seafile/entry_point.sh"]
+#ENTRYPOINT ["/var/seafile/entry_point.sh"]
