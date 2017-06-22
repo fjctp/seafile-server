@@ -2,16 +2,16 @@
 ## x86 or x86_64
 ```
 docker run -d --name seafile-server \
-           -p 8082:8082 \
-           -p 9000:9000 \
+           -p 80:80 \
+           -e "DOMAIN=www.seafile.com"
            -v <YOUR LOCAL STORAGE>:/var/seafile/shared \
            fjctp/seafile-server:latest
 ```
 ## RPi
 ```
 docker run -d --name seafile-server \
-           -p 8082:8082 \
-           -p 9000:9000 \
+           -p 80:80 \
+           -e "DOMAIN=www.seafile.com"
            -v <YOUR LOCAL STORAGE>:/var/seafile/shared \
            fjctp/seafile-server:raspberrypi3-latest
 ```

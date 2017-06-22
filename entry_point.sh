@@ -32,15 +32,14 @@ function update_link() {
 }
 
 ##### main
-if [ -d $TOPDIR/shared/ccnet ]; then
-  seafile_server start
-else
+if [ ! -d $TOPDIR/shared/ccnet ]; then
   echo "Setting up server"
   $BINDIR/setup-seafile.sh auto -n $SERVER_NAME -i $SERVER_IP -p $SEAFILE_PORT -d $TOPDIR/shared
   update_link $DOMAIN
-  seafile_server start
-  /usr/sbin/nginx
 fi
+
+seafile_server start
+/usr/sbin/nginx
 
 # a hack to keep the script running
 while true; do sleep 1000; done
