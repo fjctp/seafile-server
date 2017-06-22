@@ -3,9 +3,13 @@
 set -e 
 
 SERVER_NAME=seafile
+if [ -z $PROTOCOL ]; then
+    PROTOCOL=http
+fi
+
 if [ -z $DOMAIN ]; then 
     SERVER_IP=0.0.0.0
-    DOMAIN=http://$SERVER_IP
+    DOMAIN=$PROTOCOL://$SERVER_IP
 else
     SERVER_IP=$DOMAIN
 fi
@@ -31,15 +35,24 @@ function update_link() {
     sed -i "s:SERVICE_URL.*:SERVICE_URL = $URL:g" $CCNET_CONF
 }
 
-##### main
+# main
+## Seafile
 if [ ! -d $TOPDIR/shared/ccnet ]; then
   echo "Setting up server"
   $BINDIR/setup-seafile.sh auto -n $SERVER_NAME -i $SERVER_IP -p $SEAFILE_PORT -d $TOPDIR/shared
   update_link $DOMAIN
 fi
-
 seafile_server start
+
+## Nginx
+if [ "$PROTOCOL" == "http" ]; then
+    ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
+fi
+if [ "$PROTOCOL" == "https" ]; then
+    ln -s /etc/nginx/sites-available/seafile-ssl.conf /etc/nginx/sites-enabled/seafile-ssl.conf
+fi
 /usr/sbin/nginx
 
+echo "server is listening at $PROTOCOL://$SERVER_IP/"
 # a hack to keep the script running
 while true; do sleep 1000; done

@@ -30,8 +30,7 @@ RUN mkdir -p $TOPDIR \
     && mkdir installed \
     && mv seafile-server_* installed \
     && ln -s $TOPDIR/seafile-server-6.0.9 $TOPDIR/seafile-server-latest \
-    && rm /etc/nginx/sites-enabled/default \
-    && ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
+    && rm /etc/nginx/sites-enabled/default
     
 COPY seafile/ $BINDIR/
 COPY nginx/ /etc/nginx/sites-available/
