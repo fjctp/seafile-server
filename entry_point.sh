@@ -40,8 +40,8 @@ function update_link() {
 if [ ! -d $TOPDIR/shared/ccnet ]; then
   echo "Setting up server"
   $BINDIR/setup-seafile.sh auto -n $SERVER_NAME -i $SERVER_IP -p $SEAFILE_PORT -d $TOPDIR/shared
-  update_link $DOMAIN
 fi
+update_link $DOMAIN
 seafile_server start
 
 ## Nginx
