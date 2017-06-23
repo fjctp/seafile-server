@@ -30,7 +30,7 @@ function update_link() {
     if [ -z $(grep "FILE_SERVER_ROOT" $SEAHUB_SETTING_PY) ]; then
         echo "FILE_SERVER_ROOT = '$WEB_URL/seafhttp'" >> $SEAHUB_SETTING_PY
     else
-        sed -i "s:FILE_SERVER_ROOT.*:FILE_SERVER_ROOT = '$WEB_URL/seafhttp':g" $SEAHUB_SETTING_PY
+        sed -i "s|FILE_SERVER_ROOT.*|FILE_SERVER_ROOT = '$WEB_URL/seafhttp'|g" $SEAHUB_SETTING_PY
     fi
     sed -i "s:SERVICE_URL.*:SERVICE_URL = $URL:g" $CCNET_CONF
 }
