@@ -53,6 +53,6 @@ if [ "$PROTOCOL" == "https" ]; then
 fi
 /usr/sbin/nginx
 
-echo "server is listening at $PROTOCOL://$SERVER_IP/"
+echo "server is listening at $DOMAIN"
 # a hack to keep the script running
 while true; do sleep 1000; done
