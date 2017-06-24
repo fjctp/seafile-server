@@ -45,6 +45,7 @@ update_link $DOMAIN
 seafile_server start
 
 ## Nginx
+rm -rf /etc/nginx/sites-enabled/*
 if [ "$PROTOCOL" == "http" ]; then
     ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
 fi
