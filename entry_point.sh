@@ -27,7 +27,7 @@ function update_link() {
     SEAHUB_SETTING_PY=$SHAREDDIR/conf/seahub_settings.py
     CCNET_CONF=$SHAREDDIR/conf/ccnet.conf
     
-    if [ -z $(grep "FILE_SERVER_ROOT" $SEAHUB_SETTING_PY) ]; then
+    if [ -z "$(grep 'FILE_SERVER_ROOT' $SEAHUB_SETTING_PY)" ]; then
         echo "FILE_SERVER_ROOT = '$WEB_URL/seafhttp'" >> $SEAHUB_SETTING_PY
     else
         sed -i "s|FILE_SERVER_ROOT.*|FILE_SERVER_ROOT = '$WEB_URL/seafhttp'|g" $SEAHUB_SETTING_PY
